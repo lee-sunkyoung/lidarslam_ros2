@@ -74,7 +74,7 @@ ScanMatcherComponent::ScanMatcherComponent(const rclcpp::NodeOptions & options)
   get_parameter("publish_tf", publish_tf_);
   declare_parameter("use_odom", false);
   get_parameter("use_odom", use_odom_);
-  declare_parameter("use_imu", false);
+  declare_parameter("use_imu", true);
   get_parameter("use_imu", use_imu_);
   declare_parameter("debug_flag", false);
   get_parameter("debug_flag", debug_flag_);
@@ -246,7 +246,9 @@ void ScanMatcherComponent::initializePubSub()
 
         }
 
-        if (initial_cloud_received_) {receiveCloud(tmp_ptr, msg->header.stamp);}
+        if (initial_cloud_received_) {
+          receiveCloud(tmp_ptr, msg->header.stamp);
+        }
       }
 
     };
@@ -263,7 +265,7 @@ void ScanMatcherComponent::initializePubSub()
 
   imu_sub_ =
     create_subscription<sensor_msgs::msg::Imu>(
-    "imu/data", rclcpp::SensorDataQoS(), imu_callback);
+    "imu/raw_data", rclcpp::SensorDataQoS(), imu_callback);
 
   input_cloud_sub_ =
     create_subscription<sensor_msgs::msg::PointCloud2>(
