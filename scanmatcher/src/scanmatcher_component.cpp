@@ -265,7 +265,7 @@ void ScanMatcherComponent::initializePubSub()
 
   imu_sub_ =
     create_subscription<sensor_msgs::msg::Imu>(
-    "imu/raw_data", rclcpp::SensorDataQoS(), imu_callback);
+    "imu/data", rclcpp::SensorDataQoS(), imu_callback);
 
   input_cloud_sub_ =
     create_subscription<sensor_msgs::msg::PointCloud2>(
