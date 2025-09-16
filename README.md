@@ -26,8 +26,8 @@ You need  [ndt_omp_ros2](https://github.com/rsasaki0109/ndt_omp_ros2) for scan-m
 clone
 (If you forget to add the --recursive option when you do a git clone, run `git submodule update --init --recursive` in the lidarslam_ros2 directory)
 ```
-cd ~/ros2_ws/src
-git clone --recursive https://github.com/rsasaki0109/lidarslam_ros2
+cd ~/colcon_ws/src
+git clone --recursive https://github.com/lee-sunkyoung/lidarslam_ros2.git
 cd ..
 rosdep install --from-paths src --ignore-src -r -y
 ```
@@ -35,7 +35,6 @@ build
 ```
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
-
 ## io
 
 ### frontend(scan-matcher) 
